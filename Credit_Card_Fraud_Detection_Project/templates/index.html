@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Educational transaction risk analysis dashboard">
+<title>RiskIntel | Fraud Detection</title>
+<link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+<script src="{{ url_for('static', path='script.js') }}" defer></script>
+</head><body>
+<header><div class="brand">RISKINTEL <small>TRANSACTION MONITOR</small></div><span>EDUCATIONAL DEMO</span></header>
+<main><section class="intro"><p>OVERVIEW</p><h1>Transaction Risk Intelligence</h1><p>Review transaction signals and estimate potential risk.</p></section>
+<section class="stats">
+<div><span>Total analysed</span><b id="totalCount">0</b></div><div><span>High risk</span><b id="highCount">0</b></div>
+<div><span>Medium risk</span><b id="mediumCount">0</b></div><div><span>Low risk</span><b id="lowCount">0</b></div></section>
+<section class="panel"><p>NEW ANALYSIS</p><h2>Check a transaction</h2>
+<form id="transactionForm">
+<label>Amount (₹)<input name="amount" type="number" min="1" max="1000000" required placeholder="e.g. 2500"></label>
+<label>Hour (0–23)<input name="hour" type="number" min="0" max="23" value="14" required></label>
+<label>Recent transactions<input name="recent_transactions" type="number" min="0" max="100" value="2" required></label>
+<label>Account age (days)<input name="account_age_days" type="number" min="0" max="30000" value="365" required></label>
+<label class="check"><input name="international" type="checkbox"> International transaction</label>
+<label class="check"><input name="online" type="checkbox" checked> Online transaction</label>
+<button id="submitBtn">Analyse transaction</button></form>
+<div id="result" aria-live="polite">Your result will appear here.</div>
+<p class="note">Use sample values only. Never enter card numbers, CVVs, PINs, or personal financial information.</p>
+</section>
+<section class="panel"><div class="heading"><h2>Recent transactions</h2><button type="button" id="refreshBtn">Refresh</button></div>
+<div class="tablewrap"><table><thead><tr><th>ID</th><th>Amount</th><th>Risk score</th><th>Risk level</th><th>Prediction</th></tr></thead><tbody id="transactionRows"><tr><td colspan="5">No transactions yet.</td></tr></tbody></table></div></section>
+<p class="note">Synthetic-data learning project only. Not suitable for real financial decisions or production fraud prevention.</p>
+</main></body></html>
